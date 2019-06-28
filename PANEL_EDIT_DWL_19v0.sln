@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PANEL_EDIT_DWL_19v0", "PANEL_EDIT_DWL_19v0\PANEL_EDIT_DWL_19v0.csproj", "{E0D1A783-B930-4C5F-A626-3EDD06E9D0DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0D1A783-B930-4C5F-A626-3EDD06E9D0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0D1A783-B930-4C5F-A626-3EDD06E9D0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0D1A783-B930-4C5F-A626-3EDD06E9D0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0D1A783-B930-4C5F-A626-3EDD06E9D0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AED8F87F-9205-4989-955D-E3159B03843E}
+	EndGlobalSection
+EndGlobal
