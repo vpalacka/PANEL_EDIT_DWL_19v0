@@ -12,22 +12,38 @@ using System.IO;
 
 namespace PANEL_EDIT_DWL_19v0
 {
+    /// <summary>
+    /// Form - picture grid 
+    /// </summary>
     public partial class Form1 : Form
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
             fillData();
         }
 
+        #region Fields
+        /// <summary>
+        /// List of all files with paths from subdirectories
+        /// </summary>
         readonly List<string> list = new List<string>();
-       
-        
+        /// <summary>
+        /// Number of collumns in grid
+        /// </summary>
+        const int nrColumns = 5;
+        #endregion
 
+        #region Helper functions
+        /// <summary>
+        /// fill datagrid with pictures from subdirectories
+        /// </summary>
         private void fillData()
         {
             int i = 0;
-            const int nrColumns = 5;
             Object[] row = new Object[nrColumns];
             
             DataGridViewImageColumn[] columns = new DataGridViewImageColumn[nrColumns];
@@ -47,80 +63,29 @@ namespace PANEL_EDIT_DWL_19v0
             {
                 row.SetValue(Image.FromFile(s), i % nrColumns);
                 //if the last value in row is created add row to grid
-                if((i!=0)&&((i % nrColumns) == 0) || ((list.Count-1) == i) )
+                if ((i != 0) && (((i + 1) % nrColumns) == 0) || ((list.Count - 1) == i))
                 {
-                    dataGridView1.Rows.Add(row); 
+                    dataGridView1.Rows.Add(row);
+                    row = new Object[nrColumns];
                 }
                 i++;
             }
-
-
-            /*
-
-             
-            //Construct columns
-            
-            DataGridViewImageColumn imgCol = new DataGridViewImageColumn();
-            imgCol.HeaderText = "Značky";
-            imgCol.Name = "Znacky";
-            dataGridView1.Columns.Add(imgCol);
-
-            DataGridViewImageColumn imgCol2 = new DataGridViewImageColumn();
-            imgCol.HeaderText = "";
-            imgCol.Name = "Col2";
-            dataGridView1.Columns.Add(imgCol2);
-
-            DataGridViewImageColumn imgCol3 = new DataGridViewImageColumn();
-            imgCol.HeaderText = "";
-            imgCol.Name = "Col3";
-            dataGridView1.Columns.Add(imgCol3);
-            
-
-            string[] directories = Directory.GetDirectories(@"..\..\bin\Obr");
-            string[] files = Directory.GetFiles(directories[0], "*.jpg");
-            //Image[] images = new Image[files.Length];
-            Object[] rows = new object[directories.Length];
-            Object[] row = new Object[files.Length];
-            for (var i = 0; i < files.Length; i++)
-            {
-                images[i] = Image.FromFile(files[i]);
-                row.SetValue(images[i], i);
-            }
-            
-             
-            
-            Image img = Image.FromFile(files[0]);
-            Image img2 = Image.FromFile(files[1]);
-            Image img3 = Image.FromFile(files[2]);
-            Object[] row = new Object[] { img, img2, img3 };
-            
-            dataGridView1.Rows.Add(row);
-            */
-        }
-        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            DataGridViewImageCell cell = (DataGridViewImageCell)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
-            MessageBox.Show("Hello World");
-        }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+  
         }
 
         /// <summary>
-        /// Rekurzívne vyhľadávanie názvov súborov v podadresároch
+        /// Recursive srearch in subdirectories for "*.jpg" files
         /// </summary>
         /// <param name="sDir"></param>
         void DirSearch(string sDir)
         {
-            
+
             try
             {
                 foreach (string d in Directory.GetDirectories(sDir))
                 {
-                                        
-                    foreach (string f in Directory.GetFiles(d, "*.jpg" ))
+
+                    foreach (string f in Directory.GetFiles(d, "*.jpg"))
                     {
                         list.Add(f);
                     }
@@ -132,7 +97,27 @@ namespace PANEL_EDIT_DWL_19v0
                 Console.WriteLine(excpt.Message);
             }
         }
-        
+        #endregion
+
+        #region Event handlers
+        private void DataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int ind;
+            DataGridViewImageCell cell = (DataGridViewImageCell)dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            ind = cell.RowIndex * nrColumns + cell.ColumnIndex;
+            if (ind < list.Count)
+            {
+
+                MessageBox.Show(list[ind]);
+            }
+        }
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        #endregion
+
     }
 }
 
