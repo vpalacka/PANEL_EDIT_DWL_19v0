@@ -16,5 +16,12 @@ namespace PANEL_EDIT_DWL_19v0
         {
             InitializeComponent();
         }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f1 = new Form1();
+            f1.Show();
+        }
     }
 }

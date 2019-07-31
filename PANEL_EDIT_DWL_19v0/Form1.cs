@@ -118,6 +118,13 @@ namespace PANEL_EDIT_DWL_19v0
         }
         #endregion
 
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form f2 = new Form2();
+            f2.ShowDialog();
+            
+        }
     }
 }
 
