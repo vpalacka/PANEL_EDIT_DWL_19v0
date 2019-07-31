@@ -120,9 +120,10 @@ namespace PANEL_EDIT_DWL_19v0
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form f2 = new Form2();
-            f2.ShowDialog();
+            //this.Hide();
+            Form f2 = new CPower_CSharp.Form1();
+            
+            f2.Show();
             
         }
     }
